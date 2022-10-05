@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <fstream>
+#include <string>
 #include "catClass.hpp"
 
 void Train()
@@ -16,7 +17,6 @@ void Train()
 }
 void Option()
 {
-    std::string answer;
 
     std::cout << "Options: \n";
     std::cout << std::endl;
@@ -26,9 +26,7 @@ void Option()
     std::cout << "4.Quit \n";
     std::cout << std::endl;
 
-    std::cout << "Type>> ";
-    std::cin.ignore();
-    std::getline(std::cin, answer, '*');
+    std::cout << "Type: ";
 }
 void Menu()
 {
@@ -60,8 +58,12 @@ int main()
     int option;
     int movement;
     int cats = 2;
-    int trainingItems;
+    int trainingItems = 10;
     int picktrainingItem;
+    std::string upgradeWarrior;
+
+    int xpGainer = 300;
+    int healthReplenshisher;
 
     srand((unsigned)time(0));
     int spawnWarrior = 1 + (rand() % 7);
@@ -95,15 +97,17 @@ int main()
     _Pinestar.health = 45;
     _Pinestar.name = userCharacters[1];
     _Pinestar.level = 1;
+    _Pinestar.Xp = 0;
 
-    Yellofang Yellofang;
-    Yellofang.damage = 55;
-    Yellofang.health = 23;
-    Yellofang.specialmoveName = "Healer";
+    _Yellofang _Yellofang;
+    _Yellofang.damage = 55;
+    _Yellofang.health = 23;
+    _Yellofang.specialmoveName = "Fangs of healing";
 
-    Yellofang.specialmovehealingPoint = 35;
-    Yellofang.name = userCharacters[2];
-    Yellofang.level = 1;
+    _Yellofang.specialmovehealingPoint = 35;
+    _Yellofang.name = userCharacters[2];
+    _Yellofang.level = 1;
+    _Yellofang.Xp = 0;
 
     Spawning_1 _spawningOne;
     // _spawningOne.print(_Pinestar);
@@ -116,7 +120,7 @@ int main()
         for (int i = 0; i < 1; i++)
         {
             system("clear");
-            std::cout << "These are your characters " << _Pinestar.name << ", and " << Yellofang.name << std::endl;
+            std::cout << "These are your characters " << _Pinestar.name << ", and " << _Yellofang.name << std::endl;
 
             sleep(2);
             system("clear");
@@ -183,29 +187,60 @@ int main()
                 }
             case 2:
 
-            Train();
-            
-            if (movement == 2){
-
-                if (trainingItems > 1)
+                if (trainingItems >= 1)
                 {
 
-                    
+                    Train();
 
                     std::cout << "Type: ";
                     std::cin >> picktrainingItem;
 
                     if (picktrainingItem == 1)
                     {
-                        std::cout << "Which warrior: " << _Pinestar.name << " " << Yellofang.name << std::endl;
+                        std::cout << "Which warrior: " << _Pinestar.name << " " << _Yellofang.name << std::endl;
+                        std::cout << "Type: ";
+                        std::cin >> upgradeWarrior;
+
+                        // checking if the user input equals one of the names in the array
+
+                        if (upgradeWarrior == userCharacters[1])
+                        {
+
+                            std::cout << "Adding Xp \n";
+                            _Pinestar.Xp = _Pinestar.Xp += xpGainer;
+
+                            if (_Pinestar.Xp > 100)
+                            {
+                                _Pinestar.level = _Pinestar.level += 1;
+                                std::cout << userCharacters[1] << " Is successfuly upgraded is current level is now " << _Pinestar.level << std::endl;
+                            }
+                            else if (_Pinestar.Xp < 100)
+                            {
+                                std::cout << userCharacters[1] << "Xp is now " << _Pinestar.Xp << std::endl;
+                            }
+                        }
+                        else if (upgradeWarrior == userCharacters[2])
+                        {
+
+                            if (_Yellofang.Xp > 100)
+                            {
+                                _Yellofang.level = _Pinestar.level += 1;
+                                std::cout << userCharacters[1] << " Is successfuly upgraded is current level is now " << _Yellofang.level << std::endl;
+                            }
+                            else if (_Yellofang.Xp < 100)
+                            {
+                                std::cout << userCharacters[1] << "Xp is now " << _Yellofang.Xp << std::endl;
+                            }
+
+                            std::cout << userCharacters[2] << std::endl;
+                        }
                     }
                 }
-                else if (trainingItems < 1)
+                else if (trainingItems != 1)
                 {
                     std::cout << "You do not have any training items \n";
                     continue;
                 }
-            }
             }
         }
     }

@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <iostream>
-using namespace std;
+
 
 class _Pinestar
 {
@@ -12,6 +12,7 @@ public:
     int health;
     int specialmoveDamage;
     int level;
+    int Xp;
 
     std::string specialmoveName;
     std::string name;
@@ -28,13 +29,14 @@ public:
     }
 };
 
-class Yellofang
+class _Yellofang
 {
 public:
     int damage;
     int health;
     int specialmovehealingPoint;
     int level;
+    int Xp;
 
     std::string specialmoveName;
     std::string name;
@@ -45,7 +47,7 @@ public:
 class Spawning_2
 {
 public:
-    void print(Yellofang)
+    void print(_Yellofang)
     {
         std::cout << "I summon you Yellofang\n";
     }
