@@ -4,8 +4,7 @@
 #include <string>
 #include "catClass.hpp"
 
-void Train()
-{
+void Train(){
 
     std::cout << "Please select which training item you want to use \n";
     std::cout << std::endl;
@@ -21,7 +20,7 @@ void Option()
     std::cout << "Options: \n";
     std::cout << std::endl;
     std::cout << "1.find new warriors \n";
-    std::cout << "2.train \n";
+    std::cout << "2.Equipment for  \n";
     std::cout << "3.Inventory \n";
     std::cout << "4.Quit \n";
     std::cout << std::endl;
@@ -236,8 +235,7 @@ int main()
                         }
                     }
                 }
-                else if (trainingItems != 1)
-                {
+                else if (trainingItems != 1){
                     std::cout << "You do not have any training items \n";
                     continue;
                 }
