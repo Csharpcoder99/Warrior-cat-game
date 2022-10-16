@@ -4,15 +4,24 @@
 #include <string>
 #include "catClass.hpp"
 
-void Train(){
+void Train()
+{
 
     std::cout << "Please select which training item you want to use \n";
     std::cout << std::endl;
 
-    std::cout << "########Training Items######### \n";
-    std::cout << "# 1.Xp Gainer(This gains more xp for the warrior without battling)\n";
-    std::cout << "# 2.Health replenish \n";
-    std::cout << "#########Traing Items########## \n";
+    // std::cout << "########Training Items######### \n";
+    // std::cout << "Total Items: " << inventoryItems << '\n';
+    // std::cout << "# 1." << PlayerItems[1] << "\n";
+    // std::cout << "# 2." << PlayerItems[2] << "\n";
+    // std::cout << "# 3." << PlayerItems[3] << "\n";
+    // std::cout << "# 4." << PlayerItems[4] << "\n";
+    // std::cout << "# 5." << PlayerItems[5] << "\n";
+    // std::cout << "# 6." << PlayerItems[6] << "\n";
+    // std::cout << "# 7." << PlayerItems[7] << "\n";
+    // std::cout << "# 8." << PlayerItems[8] << "\n";
+    // std::cout << "# 9." << PlayerItems[9] << "\n";
+    // std::cout << "#########Traing Items########## \n";
 }
 void Option()
 {
@@ -20,7 +29,7 @@ void Option()
     std::cout << "Options: \n";
     std::cout << std::endl;
     std::cout << "1.find new warriors \n";
-    std::cout << "2.Equipment for  \n";
+    std::cout << "2.Equipment for characters \n";
     std::cout << "3.Inventory \n";
     std::cout << "4.Quit \n";
     std::cout << std::endl;
@@ -46,14 +55,7 @@ void Menu()
 
 int main()
 {
-
-    std::string region[5] = {
-        "Nothing",
-        "Desert",
-        "Jungle",
-        "Arctic",
-        "Sea"};
-
+    std::string command;
     int option;
     int movement;
     int cats = 2;
@@ -62,13 +64,46 @@ int main()
     std::string upgradeWarrior;
 
     int xpGainer = 300;
-    int healthReplenshisher;
+    int healthReplenshisherOption;
+    int healthReplenshisherPoints;
+    int inventoryItems = 2;
+
+    int level1YellowfangHealthPoint = 23;
+    int level1PinestarHealthPoint = 45;
 
     srand((unsigned)time(0));
     int spawnWarrior = 1 + (rand() % 7);
 
     srand((unsigned)time(0));
     int random_number = 1 + (rand() % 4);
+
+    srand((unsigned)time(0));
+    int randomItem = 1 + (rand() % 9);
+
+    std::string PlayerItems[10] = {
+        "Nothing",
+        "Xp Gainer",
+        "Health replenish",
+        "",
+        "",
+        "",
+        "",
+        "",
+    };
+
+    std::string Items[10] = {
+        "Nothing",
+        "Xp Gainer(This gains more xp for the warrior without battling)",
+        "Health replenish",
+        "Level 1 Armor",
+        "Level 2 Armor",
+        "Level 3 Armor",
+        "Level 1 speed",
+        "Level 2 speed",
+        "Level 3 speed",
+        "Level 2 Xp Gainer",
+
+    };
 
     std::string uncatchCats[9] = {
         // this array goes from top to bottom the top cats are the rare ones
@@ -87,6 +122,13 @@ int main()
         "Pinestar",
         "Yellowfang",
     };
+
+    std::string region[5] = {
+        "Nothing",
+        "Desert",
+        "Jungle",
+        "Arctic",
+        "Sea"};
 
     _Pinestar _Pinestar;
     _Pinestar.damage = 20;
@@ -114,14 +156,17 @@ int main()
     Menu();
     std::cin >> option;
 
-    if (option == 1)
-    {
+    while(true){
+
+        if (option == 1)
+        {
+
         for (int i = 0; i < 1; i++)
         {
-            system("clear");
+            // system("clear");
             std::cout << "These are your characters " << _Pinestar.name << ", and " << _Yellofang.name << std::endl;
 
-            sleep(2);
+            sleep(3);
             system("clear");
 
             switch (random_number)
@@ -147,13 +192,14 @@ int main()
 
             sleep(2);
             system("clear");
+
             Option();
 
             std::cin >> movement;
 
-            switch (movement)
+            if (movement == 1)
             {
-            case 1:
+
                 std::cout << "Looking for a warrior to catch \n";
                 sleep(1);
 
@@ -184,12 +230,28 @@ int main()
                     std::cout << "You caught " << uncatchCats[1] << std::endl;
                     break;
                 }
-            case 2:
+            }
+            else if (movement == 2)
+            {
 
                 if (trainingItems >= 1)
                 {
 
                     Train();
+
+                    std::cout << "########Training Items######### \n";
+                    std::cout << "Total Items: " << inventoryItems << '\n';
+
+                    std::cout << "# 1." << PlayerItems[1] << "\n";
+                    std::cout << "# 2." << PlayerItems[2] << "\n";
+                    std::cout << "# 3." << PlayerItems[3] << "\n";
+                    std::cout << "# 4." << PlayerItems[4] << "\n";
+                    std::cout << "# 5." << PlayerItems[5] << "\n";
+                    std::cout << "# 6." << PlayerItems[6] << "\n";
+                    std::cout << "# 7." << PlayerItems[7] << "\n";
+                    std::cout << "# 8." << PlayerItems[8] << "\n";
+                    std::cout << "# 9." << PlayerItems[9] << "\n";
+                    std::cout << "#########Traing Items########## \n";
 
                     std::cout << "Type: ";
                     std::cin >> picktrainingItem;
@@ -234,9 +296,67 @@ int main()
                             std::cout << userCharacters[2] << std::endl;
                         }
                     }
+                    else if (picktrainingItem == 2)
+                    {
+                        std::cout << "Which warrior: 1.Pinestar(" << _Pinestar.health << "), 2.Yellowfang(" << _Yellofang.health << ")" << std::endl;
+
+                        std::cout << "Type: ";
+                        std::cin >> healthReplenshisherOption;
+
+                        if (healthReplenshisherOption == 1)
+                        {
+
+                            if (_Pinestar.health >= level1PinestarHealthPoint)
+                            {
+                                std::cout << _Pinestar.name << " health is already to the max \n";
+                            }
+                            else
+                            {
+                                _Pinestar.health = _Pinestar.health + healthReplenshisherPoints;
+                                std::cout << _Pinestar.name << " health is now replenshed\n";
+
+                                continue;
+                            }
+                        }
+                        else if (healthReplenshisherOption == 2)
+                        {
+                            if (_Yellofang.health >= level1YellowfangHealthPoint)
+                            {
+                                std::cout << _Yellofang.name << " health is already to the max \n";
+                            }
+                            else
+                            {
+                                _Yellofang.health = _Yellofang.health + healthReplenshisherPoints;
+                                std::cout << _Yellofang.name << " health is now replenshed\n";
+
+                                sleep(2);
+                                continue;
+                            }
+                        }
+                    }
                 }
-                else if (trainingItems != 1){
+                else if (trainingItems != 1)
+                {
                     std::cout << "You do not have any training items \n";
+                    continue;
+                }
+            }
+            else if (movement == 3)
+            {
+
+                std::cout << "Number of Items: " << inventoryItems << std::endl;
+                std::cout << "Items: " << PlayerItems[1] << ", " << PlayerItems[2] << ", " << PlayerItems[3] << ", " << PlayerItems[4] << ", " << PlayerItems[5] << ", " << PlayerItems[6] << ", " << PlayerItems[7] << ", " << PlayerItems[8] << ", " << PlayerItems[9] << '\n';
+
+                std::cout << "Commands: Exit \n";
+                std::cout << "Type: ";
+                std::cin >> command;
+
+                if (command == "Exit")
+                {
+                    continue;
+                }
+                else
+                {
                     continue;
                 }
             }
@@ -246,4 +366,6 @@ int main()
     {
         exit(EXIT_SUCCESS);
     }
+    }
+
 };
