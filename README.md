@@ -1,7 +1,7 @@
 # Warrior-cat-game
 
 
-This game was created for fun with my best friend
+This game was created for fun with my best friend.
 This game was based off the warrior cats series https://en.wikipedia.org/wiki/Warriors_(novel_series)
 You find warriors and battle to get more characters uprgade and travel through diffrient regions and fight the ultimate bose Tigerstar with
 
