@@ -31,6 +31,7 @@ void Option()
     std::cout << "1.find new warriors \n";
     std::cout << "2.Equipment for characters \n";
     std::cout << "3.Inventory \n";
+    std::cout << "4.Restart \n";
     std::cout << "4.Quit \n";
     std::cout << std::endl;
 
@@ -273,7 +274,7 @@ int main()
                             if (_Pinestar.Xp > 100)
                             {
                                 _Pinestar.level = _Pinestar.level += 1;
-                                std::cout << userCharacters[1] << " Is successfuly upgraded is current level is now " << _Pinestar.level << std::endl;
+                                std::cout << userCharacters[1] << " Is successfuly upgraded his current level is now " << _Pinestar.level << std::endl;
                             }
                             else if (_Pinestar.Xp < 100)
                             {
@@ -358,6 +359,28 @@ int main()
                 else
                 {
                     continue;
+                }
+            }else if (movement == 4){
+                std::cout << "Loading\n";
+
+                sleep(2);
+                system("clear");
+
+                try {
+                    std::cout << "Restarting don't type anything \n";
+                    sleep(2);
+                    system("clear");
+
+                    system("g++ main.cpp -o main");
+                    system("./main");
+
+
+
+                }catch(int retrying){
+
+                    std::cout << "Could not fix shuting down \n";
+                    exit(1);
+
                 }
             }
         }
