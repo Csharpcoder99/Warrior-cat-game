@@ -23,8 +23,7 @@ void Train()
     // std::cout << "# 9." << PlayerItems[9] << "\n";
     // std::cout << "#########Traing Items########## \n";
 }
-void Option()
-{
+void Option(){
 
     std::cout << "Options: \n";
     std::cout << std::endl;
@@ -56,8 +55,10 @@ void Menu()
 
 int main()
 {
+    
     std::string defaultCat = "Nightheart";
     std::string command;
+    std::string location;
     int option;
     int movement;
     int cats = 2;
@@ -82,9 +83,16 @@ int main()
     srand((unsigned)time(0));
     int randomItem = 1 + (rand() % 9);
 
+    std::string ownedCats[12] = {
+        "Nothing",
+        "Yellowfang",
+        "Pinestar",
+    };
+
     std::string desertCats[2] = { //These cats are in these specific regions to find them
         "Sandstorm",
-        "Spottedleaf"};
+        "Spottedleaf"
+    };
 
     std::string jungleCats[2] = {
         "Brambleclaw",
@@ -193,7 +201,7 @@ int main()
             for (int i = 0; i < 1; i++)
             {
                 // system("clear");
-                std::cout << "These are your characters " << _Pinestar.name << ", and " << _Yellofang.name << std::endl;
+                std::cout << "These are your characters " << ownedCats[1] << " " << ownedCats[2] << std::endl;
 
                 sleep(3);
                 system("clear");
@@ -203,19 +211,29 @@ int main()
 
                 case 1:
                     std::cout << "You are in the region of " << region[1] << std::endl;
+                    region[1] = location;
+                    std::cout << location;
                     break;
 
                 case 2:
                     std::cout << "You are in the region of " << region[2] << std::endl;
+                    region[2] = location;
+                    std::cout << location;
                     break;
                 case 3:
                     std::cout << "You are in the region of " << region[3] << std::endl;
+                    region[3] = location;
+                    std::cout << location;
                     break;
                 case 4:
                     std::cout << "You are in the region of " << region[4] << std::endl;
+                    region[4] = location;
+                    std::cout << location;
                     break;
                 default:
                     std::cout << "You are in the region of " << region[1] << std::endl;
+                    region[1] = location;
+                    std::cout << location;
                     break;
                 }
 
@@ -237,30 +255,48 @@ int main()
 
                     case 1:
                         std::cout << "You caught " << uncatchCats[1] << std::endl;
+                        uncatchCats[1] = ownedCats[3];
+                        std::cout << ownedCats[3] << std::endl;
                         break;
                     case 2:
                         std::cout << "You caught " << uncatchCats[2] << std::endl;
+                        uncatchCats[2] = ownedCats[4];
+                        std::cout << ownedCats[4] << std::endl;
                         break;
                     case 3:
                         std::cout << "You caught " << uncatchCats[3] << std::endl;
+                        uncatchCats[3] = ownedCats[5];
+                        std::cout << ownedCats[5] << std::endl;
                         break;
                     case 4:
                         std::cout << "You caught " << uncatchCats[4] << std::endl;
+                        uncatchCats[4] = ownedCats[6];
+                        std::cout << ownedCats[6] << std::endl;
                         break;
                     case 5:
                         std::cout << "You caught " << uncatchCats[5] << std::endl;
+                        uncatchCats[5] = ownedCats[7];
+                        std::cout << ownedCats[7] << std::endl;
                         break;
                     case 6:
                         std::cout << "You caught " << uncatchCats[6] << std::endl;
+                        uncatchCats[6] = ownedCats[8];
+                        std::cout << ownedCats[8] << std::endl;
                         break;
                     case 7:
                         std::cout << "You caught " << uncatchCats[7] << std::endl;
+                        uncatchCats[7] = ownedCats[9];
+                        std::cout << ownedCats[9] << std::endl;
                         break;
                     case 8:
                         std::cout << "You caught " << uncatchCats[8] << std::endl;
+                        uncatchCats[8] = ownedCats[10];
+                        std::cout << ownedCats[10] << std::endl;
                         break;
                     case 9:
                         std::cout << "You caught " << uncatchCats[9] << std::endl;
+                        uncatchCats[9] = ownedCats[11];
+                        std::cout << ownedCats[11] << std::endl;
                         break;
                     default:
                         std::cout << "You caught " << defaultCat << std::endl;
@@ -412,7 +448,7 @@ int main()
                         system("g++ main.cpp -o main");
                         system("./main");
                     }
-                    catch (int retrying)
+                    catch (int retryingCode)
                     {
 
                         std::cout << "Could not fix shuting down \n";
